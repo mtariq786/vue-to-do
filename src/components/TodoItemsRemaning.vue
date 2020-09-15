@@ -5,10 +5,10 @@
 <script>
     export default {
         name: "TodoItemsRemaning",
-        props:{
-            remaning:{
-                type:Number,
-                required:true,
+        computed:{
+            remaning(){
+
+               return this.$store.getters.remaning;
             }
         }
     }

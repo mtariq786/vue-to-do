@@ -9,16 +9,24 @@
 <script>
     export default {
         name: "TodoCheckAll",
-        props:{
+        /*props:{
             anyRemaning:{
                 type:Boolean,
                 required:true
             }
+        },*/
+        computed:{
+
+            anyRemaning() {
+                return this.$store.getters.anyRemaning
+            }
+
         },
         methods:{
             checkAllTodos(){
 
-                eventBus.$emit('checkAll',this.anyRemaning);
+                // eventBus.$emit('checkAll',this.anyRemaning);
+                this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
             }
         }
     }
