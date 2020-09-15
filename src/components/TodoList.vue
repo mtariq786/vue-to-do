@@ -92,7 +92,7 @@
                 }
 
 
-                this.$store.commit('addTodo',{
+                this.$store.dispatch('addTodo',{
                     id: this.todoId,
                     title: this.newToDo,
                     completed: false,

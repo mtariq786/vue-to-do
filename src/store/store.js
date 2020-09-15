@@ -83,6 +83,53 @@ export const store = new Vuex.Store({
                 'editing':todo.editing,
             })
         }
+    },
+    actions:{
+        addTodo(context,todo){
+
+            setTimeout(()=>{
+
+                context.commit('addTodo',todo);
+            },1000)
+        },
+        clearCompleted(context){
+
+            setTimeout(()=>{
+                context.commit('clearCompleted');
+
+            },1000)
+
+        },
+        ChangeFilter(context,filter){
+
+            setTimeout(()=>{
+
+                context.commit('ChangeFilter',filter);
+            },1000)
+
+        },
+        CheckAll(context){
+            setTimeout(()=>{
+                context.commit('CheckAll');
+
+            },1000)
+
+
+        },
+        deleteToDo(context){
+            setTimeout(()=>{
+                context.commit('deleteToDo');
+
+            },1000)
+
+        },
+
+        updateTodo(context,todo){
+            setTimeout(()=>{
+                context.commit('updateTodo',todo);
+
+            },1000)
+        }
     }
 });
 

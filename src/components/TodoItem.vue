@@ -67,7 +67,7 @@
                 // eventBus.$emit('removedTodo',index);
                 /*const index = this.$store.state.todos.findIndex(item => item.id === id);
                 this.$store.state.todos.splice(index, 1);*/
-                this.$store.commit('deleteToDo',id);
+                this.$store.dispatch('deleteToDo',id);
 
             },
             editTodo() {
@@ -82,7 +82,7 @@
                 }
                 this.editing = false;
 
-                this.$store.commit('updateTodo',{
+                this.$store.dispatch('updateTodo',{
                     'id':this.id,
                         'title':this.title,
                         'completed':this.completed,

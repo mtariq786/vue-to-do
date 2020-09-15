@@ -26,7 +26,7 @@
                 // this.filter = filter;
                 // eventBus.$emit('filterChanged',this.filter);
                 // this.$store.state.filter = filter;
-                this.$store.commit('ChangeFilter',filter);
+                this.$store.dispatch('ChangeFilter',filter);
             }
         }
     }
