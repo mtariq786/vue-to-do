@@ -23,9 +23,10 @@
        },
         methods:{
             changeFilter(filter){
-                this.filter = filter;
+                // this.filter = filter;
                 // eventBus.$emit('filterChanged',this.filter);
-                this.$store.state.filter = filter;
+                // this.$store.state.filter = filter;
+                this.$store.commit('ChangeFilter',filter);
             }
         }
     }

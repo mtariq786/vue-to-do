@@ -26,7 +26,8 @@
             checkAllTodos(){
 
                 // eventBus.$emit('checkAll',this.anyRemaning);
-                this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
+                // this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
+                this.$store.commit('CheckAll');
             }
         }
     }

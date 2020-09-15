@@ -65,8 +65,10 @@
             removeTodo(id){
 
                 // eventBus.$emit('removedTodo',index);
-                const index = this.$store.state.todos.findIndex(item => item.id === id);
-                this.$store.state.todos.splice(index, 1);
+                /*const index = this.$store.state.todos.findIndex(item => item.id === id);
+                this.$store.state.todos.splice(index, 1);*/
+                this.$store.commit('deleteToDo',id);
+
             },
             editTodo() {
 
@@ -79,13 +81,21 @@
                     return;
                 }
                 this.editing = false;
-                const  index = this.$store.state.todos.findIndex(item => item.id === this.id);
+
+                this.$store.commit('updateTodo',{
+                    'id':this.id,
+                        'title':this.title,
+                        'completed':this.completed,
+                        'editing':this.editing,
+                });
+
+               /* const  index = this.$store.state.todos.findIndex(item => item.id === this.id);
                 this.$store.state.todos.splice(index,1,{
                     'id':this.id,
                     'title':this.title,
                     'completed':this.completed,
                     'editing':this.editing,
-                })
+                })*/
                 /*eventBus.$emit('finishedEdit',{
                     'index':this.index,
                     'todo':{

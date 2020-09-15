@@ -53,17 +53,17 @@
         created(){
             // eventBus.$on('removedTodo',(index)    => this.removeTodo(index));
             // eventBus.$on('finishedEdit',(data)    => this.finishedEdit(data));
-            eventBus.$on('checkAll',(checked)     => this.checkAllTodos(checked));
+           /* eventBus.$on('checkAll',(checked)     => this.checkAllTodos(checked));
             eventBus.$on('filterChanged',(filter) => this.$store.state.filter = filter);
-            eventBus.$on('clearCompleted',() =>this.clearCompletedTodo() );
+            eventBus.$on('clearCompleted',() =>this.clearCompletedTodo() );*/
 
         },
         beforeDestroy(){
             // eventBus.$off('removedTodo',(index)    => this.removeTodo(index));
             // eventBus.$off('finishedEdit',(data)    => this.finishedEdit(data));
-            eventBus.$off('checkAll',(checked)     => this.checkAllTodos(checked));
+           /* eventBus.$off('checkAll',(checked)     => this.checkAllTodos(checked));
             eventBus.$off('filterChanged',(filter) => this.$store.state.filter = filter);
-            eventBus.$off('clearCompleted',() =>this.clearCompletedTodo() );
+            eventBus.$off('clearCompleted',() =>this.clearCompletedTodo() );*/
         },
 
         computed: {
@@ -90,12 +90,20 @@
                 if (this.newToDo.trim().length == 0) {
                     return;
                 }
-                this.$store.state.todos.push({
+
+
+                this.$store.commit('addTodo',{
+                    id: this.todoId,
+                    title: this.newToDo,
+                    completed: false,
+                    editing:false,
+                })
+                /*this.$store.state.todos.push({
 
                     id: this.todoId,
                     title: this.newToDo,
                     completed: false,
-                });
+                });*/
 
                 this.newToDo = '';
                 this.todoId++
@@ -121,7 +129,7 @@
                 this.$store.state.todos.splice(index, 1);
 
             },*/
-            cancelEdit(todo) {
+            /*cancelEdit(todo) {
                 todo.editing = false
                 todo.title = this.beforeEditCache;
 
@@ -135,7 +143,7 @@
             clearCompletedTodo() {
 
                 this.$store.state.todos = this.$store.state.todos.filter(todo => !todo.completed)
-            },
+            },*/
             /*finishedEdit(data){
 
                 this.$store.state.todos.splice(data.index,1,data.todo)

@@ -47,6 +47,42 @@ export const store = new Vuex.Store({
 
             return state.todos.filter(todo => todo.completed).length > 0;
         }
+    },
+    mutations:{
+       addTodo(state,todo){
+          state.todos.push({
+              id : todo.id,
+              title:todo.title,
+              completed:false,
+              editing:false,
+          })
+
+       },
+        clearCompleted(state){
+
+            state.todos = state.todos.filter(todo => !todo.completed)
+
+        },
+        ChangeFilter(state,filter){
+            state.filter = filter
+        },
+        CheckAll(state){
+
+           state.todos.forEach((todo) => todo.completed = event.target.checked)
+        },
+        deleteToDo(state,id){
+            const index = state.todos.findIndex(item => item.id === id);
+            state.todos.splice(index, 1);
+        },
+        updateTodo(state,todo){
+            const  index = state.todos.findIndex(item => item.id === todo.id);
+            state.todos.splice(index,1,{
+                'id':todo.id,
+                'title':todo.title,
+                'completed':todo.completed,
+                'editing':todo.editing,
+            })
+        }
     }
 });
 
