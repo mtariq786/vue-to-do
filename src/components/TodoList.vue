@@ -51,20 +51,10 @@
             }
         },
         created(){
-            // eventBus.$on('removedTodo',(index)    => this.removeTodo(index));
-            // eventBus.$on('finishedEdit',(data)    => this.finishedEdit(data));
-           /* eventBus.$on('checkAll',(checked)     => this.checkAllTodos(checked));
-            eventBus.$on('filterChanged',(filter) => this.$store.state.filter = filter);
-            eventBus.$on('clearCompleted',() =>this.clearCompletedTodo() );*/
+           this.$store.dispatch('retriveTodos')
 
         },
-        beforeDestroy(){
-            // eventBus.$off('removedTodo',(index)    => this.removeTodo(index));
-            // eventBus.$off('finishedEdit',(data)    => this.finishedEdit(data));
-           /* eventBus.$off('checkAll',(checked)     => this.checkAllTodos(checked));
-            eventBus.$off('filterChanged',(filter) => this.$store.state.filter = filter);
-            eventBus.$off('clearCompleted',() =>this.clearCompletedTodo() );*/
-        },
+
 
         computed: {
             remaning() {
@@ -123,35 +113,6 @@
                 todo.editing = false;
             },
 
-          /*  removeTodo(id) {
-
-                const index = this.$store.state.todos.findIndex(item => item.id === id);
-                this.$store.state.todos.splice(index, 1);
-
-            },*/
-            /*cancelEdit(todo) {
-                todo.editing = false
-                todo.title = this.beforeEditCache;
-
-
-            },
-            checkAllTodos() {
-
-                this.$store.state.todos.forEach((todo) => todo.completed = event.target.checked)
-
-            },
-            clearCompletedTodo() {
-
-                this.$store.state.todos = this.$store.state.todos.filter(todo => !todo.completed)
-            },*/
-            /*finishedEdit(data){
-
-                this.$store.state.todos.splice(data.index,1,data.todo)
-                /!*
-                *  const  index = this.$store.state.todos.findIndex(item => item.id === data.id);
-                this.$store.state.todos.splice(index,1,data.todo)
-                *!/
-            }*/
         }
     }
 </script>
