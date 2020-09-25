@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div>
+            Welcome {{name}}
+        </div>
         <input type="text" placeholder="type some text" class="todo-input" v-model="newToDo"
                @keyup.enter="addTodo">
         <todo-item v-for="(todo,index) in todosFiltered" :key="todo.id" :todo="todo" :index="index"
@@ -10,9 +13,9 @@
 
         <div class="extra-container">
             <!--<TodoCheckAll :anyRemaning="anyRemaning"></TodoCheckAll>-->
-            <TodoCheckAll ></TodoCheckAll>
+            <TodoCheckAll></TodoCheckAll>
 
-            <TodoItemsRemaning ></TodoItemsRemaning>
+            <TodoItemsRemaning></TodoItemsRemaning>
         </div>
 
         <div class="extra-container">
@@ -48,10 +51,18 @@
                 newToDo: '',
                 beforeEditCache: '',
                 todoId: 3,
+                name:''
             }
         },
         created(){
            this.$store.dispatch('retriveTodos')
+           this.$store.dispatch('retrieveName')
+               .then(response => {
+
+                   this.name = response.data.name
+
+               })
+
 
         },
 
